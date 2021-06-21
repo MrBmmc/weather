@@ -12,6 +12,23 @@ $(document).ready(function () {
     var day3 = $(".day3");
     var day4 = $(".day4");
     var day5 = $(".day5");
+    const style = document.createElement('style');
+
+    style.innerHTML = `
+    .high {
+        color: white;
+        background-color: red;
+    }
+   
+    .med {
+        color: white;
+        background-color: orange;
+    }
+    
+    .low {
+        color: white;
+        background-color: yellow;
+    }`;
 
     function displayCitiesList() {
         var cityListDisplay = JSON.parse(localStorage.getItem("cities"))
@@ -159,13 +176,15 @@ $(document).ready(function () {
 
                 if (intUvIndex >= 7) {
                     rawUvIndex.addClass("high");
-               
+                    document.head.appendChild(style);
+
                 } else if (intUvIndex < 6 && intUvIndex >= 4) {
-
                     rawUvIndex.addClass("med");
-                } else {
+                    document.head.appendChild(style);
 
+                } else {
                     rawUvIndex.addClass("low");
+                    document.head.appendChild(style);
                 }
 
                 UvIndex.append(rawUvIndex);
